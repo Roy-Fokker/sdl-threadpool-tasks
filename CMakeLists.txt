@@ -19,8 +19,20 @@ include(${CMAKE_MODULE_PATH}/CPM.cmake)
 # Thread Pool Library
 CPMAddPackage("gh:bshoshany/thread-pool@5.0.0") 
 ## Configure Thread Pool Library
-add_library(BS_thread_pool INTERFACE)
-target_include_directories(BS_thread_pool INTERFACE ${${CPM_LAST_PACKAGE_NAME}_SOURCE_DIR}/include)
+set(BS_thread_pool_SRC_DIR ${${CPM_LAST_PACKAGE_NAME}_SOURCE_DIR})
+add_library(BS_thread_pool STATIC)
+target_include_directories(BS_thread_pool 
+	PRIVATE
+		${BS_thread_pool_SRC_DIR}/include)
+target_sources(BS_thread_pool
+	PUBLIC 
+	FILE_SET lib_modules TYPE CXX_MODULES 
+	FILES 
+		${BS_thread_pool_SRC_DIR}/modules/BS.thread_pool.cppm)
+target_compile_features(BS_thread_pool PRIVATE cxx_std_23)
+target_compile_definitions(BS_thread_pool
+	PRIVATE
+		BS_THREAD_POOL_IMPORT_STD)
 add_library(BS::thread_pool ALIAS BS_thread_pool)
 
 # project and language to be used

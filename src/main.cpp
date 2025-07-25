@@ -1,6 +1,7 @@
-#include "BS_thread_pool.hpp"
+// #include "BS_thread_pool.hpp"
 
 import std;
+import BS.thread_pool;
 
 auto test_task() -> int
 {
