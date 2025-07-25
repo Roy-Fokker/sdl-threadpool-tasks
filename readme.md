@@ -1,4 +1,4 @@
-# Learning how Threadpool works
+# Learning how Threadpool works with SDL3 GPU
 
 ## Uses
 - CPM.cmake for package management
@@ -10,6 +10,9 @@
   - MSVC (Windows only)
   - Clang (Linux with libc++ only)
 
+## Dependences
+- https://github.com/bshoshany/thread-pool
 
 
 ## references
+- https://vorbrodt.blog/2019/02/12/simple-thread-pool/

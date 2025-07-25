@@ -16,6 +16,13 @@ include(${CMAKE_MODULE_PATH}/import-std.cmake)
 # Dependencies
 include(${CMAKE_MODULE_PATH}/CPM.cmake)
 
+# Thread Pool Library
+CPMAddPackage("gh:bshoshany/thread-pool@5.0.0") 
+## Configure Thread Pool Library
+add_library(BS_thread_pool INTERFACE)
+target_include_directories(BS_thread_pool INTERFACE ${${CPM_LAST_PACKAGE_NAME}_SOURCE_DIR}/include)
+add_library(BS::thread_pool ALIAS BS_thread_pool)
+
 # project and language to be used
 project(threadpool-tasks
 	LANGUAGES CXX
